@@ -74,3 +74,6 @@ end
 gem "devise", "~> 4.9"
 
 gem 'htmlbeautifier'
+gem "tailwindcss-rails", "~> 2.0"
+
+
