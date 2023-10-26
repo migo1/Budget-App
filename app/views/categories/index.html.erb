@@ -1,14 +1,17 @@
-<p style="color: green"><%= notice %></p>
+<%= render "header" %>
 
-<h1>Categories</h1>
 
-<div id="categories">
+<ul id="categories" class="px-2">
   <% @categories.each do |category| %>
-    <%= render category %>
-    <p>
-      <%= link_to "Show this category", category %>
-    </p>
-  <% end %>
-</div>
+  <li class=" px-2 border-2 border-gray-300 mb-2 bg-white">
 
-<%= link_to "New category", new_category_path %>
+    <a href="<%= category_path(category) %>" >
+            <%= render category %>
+          </a>
+    </li>
+  <% end %>
+</ul>
+
+<footer class="mt-auto flex justify-center bg-green-500 py-3 text-white text-center px-2">
+  <%= link_to "New category", new_category_path, class: "border-2 border-white py-2 w-full font-bold" %>
+</footer>
