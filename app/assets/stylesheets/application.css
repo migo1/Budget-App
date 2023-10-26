@@ -13,21 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
 /*
  *= require font-awesome
  */
- 
- body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
- }
 
- footer {
-    margin-top: auto;
- }
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 
- /* .homepage-footer {
+footer {
+  margin-top: auto;
+}
+
+/* .homepage-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
