@@ -8,7 +8,7 @@
     </div>
 
     <ul class="px-2">
-  <% @category.purchases.each do |purchase| %>
+  <% @purchases.each do |purchase| %>
    <a href="<%= category_purchase_path(@category, purchase) %>" >
     <li class="py-3 bg-white flex justify-between px-2 mb-2">
       <div>

@@ -21,6 +21,15 @@
     <%= form.number_field :amount, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
+  <div class="field">
+    <strong>Categories:</strong><br>
+    <% categories.each do |category| %>
+      <%= form.check_box :category_ids, { multiple: true }, category.id, nil %>
+      <%= label_tag "purchase_category_ids_#{category.id}", category.name %>
+      <br>
+    <% end %>
+  </div>
+
   <div class="inline">
     <%= form.submit class: " py-3 px-5 bg-green-500 text-white inline-block font-medium cursor-pointer w-full" %>
   </div>

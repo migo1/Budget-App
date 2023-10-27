@@ -14,6 +14,7 @@ class PurchasesController < ApplicationController
   # GET /purchases/new
   def new
     @purchase = Purchase.new
+    @categories = Category.all
   end
 
   # GET /purchases/1/edit
@@ -25,7 +26,7 @@ class PurchasesController < ApplicationController
 
     @purchase.author = current_user
 
-    @purchase.categories << @category if params[:category_id].present?
+    @purchase.categories << Category.find(params[:category_ids]) if params[:category_ids].present?
 
     respond_to do |format|
       if @purchase.save
@@ -74,6 +75,6 @@ class PurchasesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def purchase_params
-    params.require(:purchase).permit(:name, :amount)
+    params.require(:purchase).permit(:name, :amount, category_ids: [])
   end
 end
