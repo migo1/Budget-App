@@ -1,10 +1,14 @@
-<h1>Editing category</h1>
+<%= render "header" %>
 
-<%= render "form", category: @category %>
+<h1 class="flex justify-center mb-4 mt-4 text-2xl">Edit <%= @category.name%></h1>
+
+<div class="px-2">
+<%= render "form", category: @category, class:  %>
+</div>
 
 <br>
 
-<div>
-  <%= link_to "Show this category", @category %> |
-  <%= link_to "Back to categories", categories_path %>
+<div class="px-2 flex flex-col">
+  <%= link_to "Show this category", @category, class: "w-full bg-orange-500 py-2 text-white text-center mt-8 border border-gray-100 rounded-lg" %> 
+  <%= link_to "Back to categories", categories_path, class: "w-full bg-blue-500 py-2 text-white text-center mt-8 border border-gray-100 rounded-lg"  %>
 </div>

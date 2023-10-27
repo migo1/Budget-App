@@ -1,2 +1,18 @@
-<div id="<%= dom_id category %>">
+<div id="<%= dom_id category %>" class="flex justify-between">
+<div class="image flex">
+  <% if category.image.present? %>
+        <%= image_tag category.image, alt: category.name, class: 'w-20 h-24 rounded py-2' %>
+    <% end %>
+    <div class="content py-2 ml-2 text-gray-500">
+    <div class="content-details flex flex-col h-full justify-between pt-3">
+        <p ><%= category.name %></p>
+        <p class="text-sm"><%= category.created_at.strftime("%d %b %Y")  %></p>
+    </div>
+</div>
+</div>
+
+
+<div class="content pt-2  ">
+    <p class="pt-3">$70.00</p>
+</div>
 </div>

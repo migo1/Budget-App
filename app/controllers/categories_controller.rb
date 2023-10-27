@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_category, only: %i[show edit update destroy]
 
   # GET /categories or /categories.json
@@ -20,10 +21,12 @@ class CategoriesController < ApplicationController
   # POST /categories or /categories.json
   def create
     @category = Category.new(category_params)
+    @category.user = current_user
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to category_url(@category), notice: 'Category was successfully created.' }
+        handle_uploaded_image_file if category_params[:image].present?
+        format.html { redirect_to categories_path, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,6 +67,15 @@ class CategoriesController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def category_params
-    params.fetch(:category, {})
+    params.require(:category).permit(:name, :image)
+  end
+
+  def handle_uploaded_image_file
+    uploaded_file = category_params[:image]
+    file_path = Rails.root.join('public', 'uploads', uploaded_file.original_filename)
+
+    File.binwrite(file_path, uploaded_file.read)
+
+    @category.update(image: File.join('/uploads', uploaded_file.original_filename))
   end
 end
