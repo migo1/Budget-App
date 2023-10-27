@@ -1,2 +1,2 @@
-web: env RUBY_DEBUG_OPEN=true bin/rails server -p 3000
-css: bin/rails tailwindcss:watch
+release: bin/rails db:migrate
+web: bin/rails server -p ${PORT:-5000} -e $RAILS_ENV
