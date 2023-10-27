@@ -1,0 +1,31 @@
+<div id="<%= dom_id purchase %>">
+
+  <ul class="flex flex-col bg-white">
+    <li class="flex justify-between px-2 py-2">
+      <p>Name: </p>
+      <p><%= purchase.name %></p>
+    </li> <hr>
+    
+     <li class="flex justify-between px-2 py-2">
+      <p>Amount:</p>
+      <p><%= purchase.amount %></p>
+    </li> <hr>
+
+     <li class="flex justify-between px-2 py-2">
+      <p>Categories:</p>
+      <% purchase.categories.each do |category| %>
+      <p> <%= category.name %></p>
+       <% end %>
+    </li> <hr>
+
+     <li class="flex justify-between px-2 py-2">
+      <p>Created At:</p>
+      <p><%= purchase.created_at.strftime("%d %b %Y")  %></p>
+    </li> <hr>
+  </ul>
+
+
+  
+
+
+</div>
