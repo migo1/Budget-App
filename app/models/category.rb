@@ -6,4 +6,16 @@ class Category < ApplicationRecord
 
   validates :name, presence: true
   validates :image, presence: true
+
+  def total_sum
+    purchases.sum(:amount)
+  end
+
+  before_destroy :delete_associated_purchases
+
+  private
+
+  def delete_associated_purchases
+    purchases.destroy_all
+  end
 end
